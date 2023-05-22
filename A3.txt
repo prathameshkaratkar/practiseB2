@@ -1,0 +1,24 @@
+JPS
+cd /usr/local/hive/bin
+./hive
+show databases;
+create database prathamesh
+use prathamesh
+CREATE DATABASE TEIT
+CREATE TABLE STUDENT(FirstName STRING, LastName STRING, StudentId INT);
+ALTER DATABASE TEIT SET DBPROPERTIES('creator'='prathamesh karatkar','created for'='learning hive');
+DROP DATABASE TEIT CASCADE
+SHOW DATABASE
+CREATE DATABASE TEIT
+CREATE TABLE IF DOES NOT EXISTS Flight(Year SMALLINT,Month TINYINT, DayOfMonth TINYINT, DayOfWeek TINYINT, DepTime SMALLINT)
+COMMENT 'Flight' ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+STORED AS TEXTFILE TBLPROPERTIES('creator'='prathamesh karatkar');
+load data local inpath '/home/student/Desktop/2007.csv' into table Flight;
+select * from Flight;
+CREATE TABLE IF DOES NOT EXISTS Flight2009(Year SMALLINT, Month TINYINT, DayOfMonth TINYINT, DayOfWeek TINYINT, DepTime SMALLINT)
+COMMENT 'Flight2009' ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+STORED AS TEXTFILE TBLPROPERTIES ('creator'='prathamesh karatkar')
+load data local inpath '/home/student/Desktop/2009dataset.csv' into table Flight2009;
+SELECT * FROM Flight2009;
+SELECT m8.Year,m8.Month,m7.Year,m7.Month FROM Flight2009 m8 JOIN Flight m7
+

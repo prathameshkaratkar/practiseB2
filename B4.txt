@@ -1,0 +1,18 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import pandas as pd
+df=pd.read_csv("heartdisease.csv")
+df.head(5)
+sns.barplot(x='sex',y='thalach',data=df)
+sns.scatterplot(x='sex',y='thalach',data=df)
+sns.lineplot(x='sex',y='age',data=df)
+sns.pairplot(df, hue='sex', palette='Blues')
+sns.displot(df['thalach'])
+plt.scatter(df['thalach'],df['age'])
+plt.show()
+plt.scatter(df['thalach'],df['age'])
+plt.show()
+sex_df = pd.DataFrame(df['sex'].value_counts())
+sex_df
+plt.pie(sex_df['sex'],label = sex_df.index)

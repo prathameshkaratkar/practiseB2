@@ -1,0 +1,41 @@
+import pandas as pd
+import numpy as np
+air_quality = pd.read_csv('AirQualityUCI.csv')
+heart = pd.read_csv('/content/heartdisease.csv')
+air_quality.head()
+air_quality.isnull().sum()
+air_quality.sum()
+air_quality.rename(columns={'Temp':'Temperature','RH':'Humidity'},inplace=True)
+air_quality.head()
+air_quality['Datetime'] = air_quality['Date'] + air_quality['Time']
+air_quality.set_index('Datetime',inplace=True)
+air_quality.head()
+air_subset1 = air_quality[['Date','Time','CO(GT)','PT08.S1(CO)','Temperature']]
+air_subset2 = air_quality[['Temperature','Humidity','AH']]
+
+air_subset1.head()
+air_subset2.head()
+integrated_data = pd.merge(air_subset1,air_subset2,on='Temperature')
+integrated_data.head()
+heart.head()
+heart.isnull().sum()
+heart.info()
+y = heart[['num']]
+x=heart.drop(y,axis=1)
+y.head(2)
+y['num'].value_counts()
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=42)
+x_train.shape,x_test.shape,y_train.shape,y_test.shape
+from sklearn.linear_model import LogisticRegression
+lr=LogisticRegression()
+y_test['Prediction']=model.predict(x_test)
+
+
+
+
+
+
+
+
+
